@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block title %} Simple Loan Calculator {% endblock
+%} {% block body %}
+<main>
+  <h1>Simple Loan Calculator</h1>
+  <hr />
+
+  <form method="POST" action="/" id="calculateLoan">
+    <div class="mb-3">
+      <label class="form-label" for="loanAmt">Loan Amount:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="loanAmt"
+        name="loanAmt"
+        placeholder="in $USD"
+        pattern="\d{1,}"
+        autofocus="autofocus"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="lengthOfLoan">Length of Loan:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lengthOfLoan"
+        name="lengthOfLoan"
+        placeholder="in years"
+        pattern="\d{1,}"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label" for="intRate">Interest Rate:</label>
+      <input
+        type="number"
+        class="form-control"
+        id="intRate"
+        name="intRate"
+        placeholder=".06"
+        min="0"
+        max="1"
+        step="0.001"
+        required
+      />
+    </div>
+    <div class="mt-3">
+      <input
+        class="btn btn-primary"
+        type="submit"
+        id="submit"
+        value="Calculate loan"
+      />
+    </div>
+  </form>
+
+  <p>&nbsp;</p>
+
+  {% if mnthlyPmt %}
+  <p class="lead">
+    The payment for this loan will be
+    <mark><strong>{{ mnthlyPmt }}</strong></mark> per month.
+  </p>
+  {% endif %}
+</main>
+{% endblock %}
