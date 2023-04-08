@@ -25,8 +25,14 @@ class Loan:
         self.calculateDiscountFactor()
         self.loanPmt = self.loanAmount / self.getDiscountFactor()
 
+    def getLoanAmount(self):
+        return self.loanAmount
+
     def getLoanPmt(self):
         return self.loanPmt
+
+    def getPeriodicIntRate(self):
+        return self.periodicIntRate
 
 
 @app.route("/", methods=["GET"])
@@ -46,10 +52,39 @@ def mnthlyPmt():
 
         loan.calculateLoanPmt()
 
-        mnthlyLoanPmt = loan.getLoanPmt()
-        mnthlyLoanPmt = "${0:,.2f}".format(mnthlyLoanPmt)
+        monthlyLoanPayment = loan.getLoanPmt()
+        formattedMonthlyPayment = "${0:,.2f}".format(monthlyLoanPayment)
 
-        return render_template("index.html", mnthlyPmt=mnthlyLoanPmt)
+        # amortization schedule variables
+        monthlyBeginningBalance = loan.getLoanAmount()
+        totalInterestPaid = 0.0
+        amoritzation = []
+
+        # amortization schedule
+        for i in range(1, int(loan.numberOfPmts) + 1):
+            month = i
+            monthlyInterestPayment = monthlyBeginningBalance * loan.getPeriodicIntRate()
+            paymentToPrincipal = monthlyLoanPayment - monthlyInterestPayment
+            monthlyLoanBalance = monthlyBeginningBalance - paymentToPrincipal
+            totalInterestPaid = totalInterestPaid + monthlyInterestPayment
+
+            amortization_dict = {
+                "month": month,
+                "monthlyLoanPayment": "${0:,.2f}".format(monthlyLoanPayment),
+                "paymentToPrincipal": "${0:,.2f}".format(paymentToPrincipal),
+                "monthlyInterestPayment": "${0:,.2f}".format(monthlyInterestPayment),
+                "monthlyLoanBalance": "${0:,.2f}".format(monthlyLoanBalance),
+                "totalInterestPaid": "${0:,.2f}".format(totalInterestPaid),
+            }
+            amoritzation.append(amortization_dict)
+
+            monthlyBeginningBalance = monthlyLoanBalance
+
+        return render_template(
+            "index.html",
+            payment=formattedMonthlyPayment,
+            amortization=amoritzation,
+        )
 
     return redirect(url_for("index"))
 
