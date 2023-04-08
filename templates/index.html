@@ -1,9 +1,5 @@
 {% extends 'base.html' %} {% block title %} Simple Loan Calculator {% endblock
 %} {% block body %}
-<script
-  src="https://kit.fontawesome.com/2c695035ff.js"
-  crossorigin="anonymous"
-></script>
 <main>
   <h1>Simple Loan Calculator</h1>
   <hr />
@@ -62,6 +58,8 @@
 
   <p>&nbsp;</p>
 
+  <p>&nbsp;</p>
+
   {% if payment %}
   <p class="lead">
     The payment for this loan will be
@@ -74,13 +72,46 @@
     <thead>
       <tr>
         <th class="sticky">Month</th>
-        <th class="sticky">Monthly Payment</th>
-        <th class="sticky">Payment to Principal</th>
-        <th class="sticky">Monthly Interest</th>
-        <th class="sticky">Remaining Loan Balance</th>
-        <th class="sticky">Total Interest Paid</th>
+        <th class="sticky">Monthly payment</th>
+        <th class="sticky">
+          Payment to Principal
+          <a
+            href=""
+            data-bs-toggle="tooltip"
+            data-bs-title="Portion of this monthly payment used to pay down the loan balance."
+            ><sup><i class="fa-solid fa-circle-info fa-color"></i></sup
+          ></a>
+        </th>
+        <th class="sticky">
+          Monthly interest
+          <a
+            href=""
+            data-bs-toggle="tooltip"
+            data-bs-title="Portion of this monthly payment that is used for interest."
+            ><sup><i class="fa-solid fa-circle-info fa-color"></i></sup
+          ></a>
+        </th>
+        <th class="sticky">
+          Remaining Loan Balance
+          <a
+            href=""
+            data-bs-toggle="tooltip"
+            data-bs-title="Amount of loan principal remaining after this monthly payment."
+            ><sup><i class="fa-solid fa-circle-info fa-color"></i></sup
+          ></a>
+        </th>
+        <th class="sticky">
+          Total Interest Paid
+          <a
+            href=""
+            data-bs-toggle="tooltip"
+            data-bs-title="Cumulative amount of interest paid after this month."
+            ><sup><i class="fa-solid fa-circle-info fa-color"></i></sup
+          ></a>
+        </th>
       </tr>
     </thead>
+
     <tbody>
       {% for row in amortization %}
       <tr>
@@ -97,5 +128,12 @@
   </table>
   {% endif %}
 </main>
-
+<script>
+  const tooltipTriggerList = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  const tooltipList = [...tooltipTriggerList].map(
+    (tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+  );
+</script>
 {% endblock %}
