@@ -73,22 +73,12 @@
   <table class="table table-striped table-hover">
     <thead>
       <tr>
-        <th>Month</th>
-        <th>Monthly Payment</th>
-        <th>Payment to Principal</th>
-        <th>Monthly Interest</th>
-        <th>Remaining Loan Balance</th>
-        <th>
-          Total Interest Paid
-          <a
-            id="totalIntPaid"
-            title="Cumulative total of interest paid over the course of the loan."
-            href=""
-            onmousedown="displayText()"
-            onmouseup="hideText()"
-            ><i class="fa-solid fa-circle-question fa-2xs"></i
-          ></a>
-        </th>
+        <th class="sticky">Month</th>
+        <th class="sticky">Monthly Payment</th>
+        <th class="sticky">Payment to Principal</th>
+        <th class="sticky">Monthly Interest</th>
+        <th class="sticky">Remaining Loan Balance</th>
+        <th class="sticky">Total Interest Paid</th>
       </tr>
     </thead>
     <tbody>
@@ -107,15 +97,5 @@
   </table>
   {% endif %}
 </main>
-<script>
-  function displayText() {
-    var text = document.getElementById("textField");
-    text.style.display = "block";
-  }
 
-  function hideText() {
-    var text = document.getElementById("textField");
-    text.style.display = "none";
-  }
-</script>
 {% endblock %}
