@@ -23,7 +23,9 @@ class Loan:
 
     def calculateLoanPmt(self):
         self.calculateDiscountFactor()
+        print("discount factor: ", self.discountFactor)
         self.loanPmt = self.loanAmount / self.getDiscountFactor()
+        print("loan payment: ", self.loanPmt)
 
     def getLoanAmount(self):
         return self.loanAmount

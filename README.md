@@ -42,3 +42,7 @@ This application is used to teach CI/CD.
 [x] ~~Font Awesome icons for tooltips~~  
 [ ] Pytest file for unit and functional testing  
 [ ] Custom GitHub Action workflow file for CI/CD
+[ ] Client side validation
+[ ] Server side validation
+[ ] Error checking and error handling
+[ ] Re-configure Pytest for validation and error testing
