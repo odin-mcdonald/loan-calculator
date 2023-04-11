@@ -88,6 +88,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
-          app-name: "flask-tests"
+          app-name: "colbert-loan"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F4CF9A7345634B81A844CF8526F73E93 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7A7292BC7AC4095A9C8578456A82A99 }}
