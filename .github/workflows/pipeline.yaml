@@ -90,4 +90,4 @@ jobs:
         with:
           app-name: "colbert-loan"
           slot-name: "Production"
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D7A7292BC7AC4095A9C8578456A82A99 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D4F4CFE8F5B543078E119DADBACE2AAD }}
