@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error 404 - Page Not Found</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #006699;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      src="{{ url_for('static', filename='images/error404.png') }}"
+        <h1>Error 404</h1>
+        <p>Sorry, the page you requested could not be found.</p>
+        <a href="/">Return to the homepage</a>
+    </div>
+</body>
+</html>
